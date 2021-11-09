@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "reservation-app-6068c": {
+      "hosting": {
+        "reservation": [
+          "reservation-app-6068c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "reservation-app-6068c"
+  }
+}

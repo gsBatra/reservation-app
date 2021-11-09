@@ -1,0 +1,19 @@
+.form-container {
+    max-width: 350px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.cancel-edit-bar {
+    margin-bottom: 10px;
+}
+
+  .btn-dialog-close{
+    width: 45px;
+    min-width: 0px !important;
+    height: 40px;
+    padding: 0px !important;
+  }

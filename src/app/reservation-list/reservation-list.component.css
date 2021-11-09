@@ -1,0 +1,22 @@
+table{
+    margin-top: 25px;
+    width: 100%;
+}
+
+.create {
+    padding-top: 5px;
+}
+
+.search-form{
+    float:right;
+    width: 50%;
+    border-radius: 5px;
+}
+
+.hide{
+    display: none;
+}
+
+.loading{
+    margin-left: 45%;
+}

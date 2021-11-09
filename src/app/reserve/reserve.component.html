@@ -1,0 +1,49 @@
+<mat-toolbar class="cancel-edit-bar" *ngIf="this.router.url !== '/reserve'">
+    <span>{{reservationService.form.controls['$key'].value ? "Edit Reservation" : "Create Reservation"}}</span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+
+<div class="form-container"> 
+    <form [formGroup]="reservationService.form" (ngSubmit)="createReservation()">
+        <input type="hidden" formControlName="$key">
+        <mat-form-field>
+            <input formControlName="date" name="date" matInput [matDatepicker]="picker" [min]="minDate" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>Invalid Date</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Select a time</mat-label>
+            <mat-select formControlName="time" name="time">
+                <ng-container *ngFor="let time of timeService.array">
+                    <mat-option value="{{time.time}}">{{time.time}}</mat-option>
+                </ng-container>
+            </mat-select>
+            <mat-error>This field is mandatory</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Select the table size</mat-label>
+            <mat-select formControlName="table" name="table">
+                <ng-container *ngFor="let table of tableService.array">
+                    <mat-option value="{{table.size}}">{{table.size}}</mat-option>
+                </ng-container>
+            </mat-select>
+            <mat-error>This field is mandatory</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="name" name="name" matInput placeholder="Name">
+            <mat-error>This field is mandatory</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" 
+            formControlName="phone" name="phone" matInput placeholder="Phone Number">
+            <mat-error>Invalid phone number</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="email" name="email" matInput placeholder="Email">
+            <mat-error>Invalid email address</mat-error>
+        </mat-form-field>
+        <button [disabled]="reservationService.form.invalid" mat-raised-button color="primary">Make Reservation</button>
+    </form>
+</div>
