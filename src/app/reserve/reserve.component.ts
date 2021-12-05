@@ -53,14 +53,16 @@ export class ReserveComponent implements OnInit {
               ...item.payload.val()
             }
           });
-          res(array.length);
+          res(array);
         });
       });
 
-      promise.then((value) => {
-        if(value != 0) {
-          this.notifcationService.warn("! Reservation Not Available");
-          return;
+      promise.then((value: any) => {
+        if(value.length != 0) {
+          if(!(value.length === 1 && value[0].code === this.reservationService.form.value.code)){
+            this.notifcationService.warn("! Reservation Not Available");
+            return;
+          }
         }
         if(!this.reservationService.form.get('$key')?.value)
           this.reservationService.insertReservation(this.reservationService.form.value);
