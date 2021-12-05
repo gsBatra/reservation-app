@@ -25,6 +25,7 @@ export class CheckStatusComponent implements OnInit {
     phone: "",
     table: 1,
     code: "",
+    stamp: "",
   }
 
   constructor(private reservationService: ReservationService, private router: Router, 
@@ -62,6 +63,7 @@ export class CheckStatusComponent implements OnInit {
         this.reservation.phone = foundReservation.date;
         this.reservation.table = foundReservation.table;
         this.reservation.code = foundReservation.code;
+        this.reservation.stamp = foundReservation.stamp;
       }
       console.log(array);
     });

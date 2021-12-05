@@ -1,11 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { Reservation } from '../Reservation';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
-import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
 
 @Injectable({
@@ -13,28 +8,9 @@ import { DatePipe } from '@angular/common';
 })
 export class ReservationService {
 
-  // private BASE_URL = "";
-  reservationList!: AngularFireList<any>;
+  reservationList!: AngularFireList<any>; 
 
   constructor(private firebase: AngularFireDatabase, private datePipe: DatePipe) { }
-
-  // getReservations(): Observable<Reservation[]> {
-  //   return this.http.get<Reservation[]>(`${this.BASE_URL}/reservations`);
-  // }
-
-  // getReservation(code: string): Observable<Reservation[]> {
-  //   return this.http.get<Reservation[]>(`${this.BASE_URL}/reservations/status/${code}`);
-  // }
-
-  // createReservation(name: string, email: string, phone: string, table: number, date: string,
-  //   time: string, code: string): Observable<Reservation> {
-  //   return this.http.post<Reservation>(`${this.BASE_URL}/reservations`,
-  //   { name, email, phone, table, date, time, code });
-  // }
-
-  // cancelReservation(id: string): Observable<any> {
-  //   return this.http.delete(`${this.BASE_URL}/reservations/delete/${id}`);
-  // }
 
   form: FormGroup = new FormGroup ({
     $key: new FormControl(null),
@@ -45,6 +21,7 @@ export class ReservationService {
     date: new FormControl('', Validators.required),
     time: new FormControl(1, Validators.required),
     code: new FormControl(''),
+    stamp: new FormControl(''),
   });
 
   initFormGroup() {
@@ -57,6 +34,7 @@ export class ReservationService {
       date: '',
       time: 1,
       code: '',
+      stamp: '',
     });
   }
 
@@ -77,8 +55,12 @@ export class ReservationService {
     return this.reservationList.snapshotChanges();
   }
 
+  getReservationByStamp(stamp: string) {
+    this.reservationList = this.firebase.list('reservations', ref => ref.orderByChild("stamp").equalTo(stamp));
+    return this.reservationList.snapshotChanges();
+  }
+
   insertReservation(reservation: any) {
-    // reservation.date = moment.utc(new Date(reservation.date).toISOString()).format('MM/DD/YYYY');
     this.reservationList.push({
       name: reservation.name,
       email: reservation.email,
@@ -87,6 +69,8 @@ export class ReservationService {
       date: reservation.date == "" ? "" : this.datePipe.transform(reservation.date, 'MM/dd/yyyy'),
       time: reservation.time,
       code: this.getUniqueCode(4),
+      stamp: reservation.date == "" ? "" : this.datePipe.transform(reservation.date, 'MM/dd/yyyy') + " " 
+      + reservation.time + " " + reservation.table,
     });
   }
 
@@ -99,6 +83,8 @@ export class ReservationService {
       date: reservation.date == "" ? "" : this.datePipe.transform(reservation.date, 'MM/dd/yyyy'),
       time: reservation.time,
       code: reservation.code,
+      stamp: reservation.date == "" ? "" : this.datePipe.transform(reservation.date, 'MM/dd/yyyy') + " " 
+      + reservation.time + " " + reservation.table,
     });
   }
 

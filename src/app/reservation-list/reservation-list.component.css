@@ -4,13 +4,22 @@ table{
 }
 
 .create {
+    float: right;
     padding-top: 5px;
 }
 
 .search-form{
-    float:right;
+    float:left;
     width: 50%;
     border-radius: 5px;
+}
+
+.actions {
+    padding-bottom: 3%;
+}
+
+.login{
+    margin-left: 5px;
 }
 
 .hide{

@@ -7,12 +7,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { ReserveComponent } from './reserve/reserve.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 import { CheckStatusComponent } from './check-status/check-status.component';
 import { ReservationListComponent } from './reservation-list/reservation-list.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ReservationService } from './service/reservation.service';
 import { TableService } from './service/table.service';
 import { DatePipe } from '@angular/common';
+import { TimeService } from './service/time.service';
+import { LoginService } from './service/login.service';
+
 
 // Material Design
 import { MatButtonModule } from '@angular/material/button';
@@ -31,19 +35,24 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Firebase
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from 'src/environments/environment';
-import { TimeService } from './service/time.service';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ReserveComponent,
     ReservationListComponent,
-    CheckStatusComponent
+    CheckStatusComponent,
+    ThankYouComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -70,8 +79,11 @@ import { TimeService } from './service/time.service';
     MatGridListModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatCardModule,
+    MatCheckboxModule,
+    FlexLayoutModule,
   ],
-  providers: [DatePipe, ReservationService, TableService, TimeService],
+  providers: [DatePipe, ReservationService, TableService, TimeService, LoginService],
   bootstrap: [AppComponent],
   entryComponents: [ReserveComponent]
 })

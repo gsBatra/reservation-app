@@ -44,6 +44,7 @@
             <input formControlName="email" name="email" matInput placeholder="Email">
             <mat-error>Invalid email address</mat-error>
         </mat-form-field>
+        <input type="hidden" formControlName="stamp">
         <button [disabled]="reservationService.form.invalid" mat-raised-button color="primary">Make Reservation</button>
     </form>
 </div>

@@ -1,3 +1,4 @@
+
 <div class="actions">
     <mat-form-field class="search-form" floatLabel="never">
         <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
@@ -8,8 +9,10 @@
 
     <div class="create">
         <button (click)="onCreate()" mat-raised-button color="secondary">Create</button>
+        <button class="login" *ngIf="isLoggedIn" (click)="onLogout()" mat-raised-button color="warn">Logout</button>
     </div>
 </div>
+
 <div class="mat-elevation-z8">
     <table class="table" mat-table [dataSource]="reservations" matSort>
         <ng-container matColumnDef="date">

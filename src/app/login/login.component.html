@@ -1,0 +1,21 @@
+<!-- <div class="login">
+    <input matInput type="text" placeholder="Email" #email> 
+    <input matInput id="pw" placeholder="Password" type="password" #password> 
+    <button mat-raised-button color="primary" (click)="onSignIn(email.value, password.value)">Sign In</button>
+    <mat-checkbox class="show_cb" (click)="showPassword()" color="warn">Show Password</mat-checkbox>
+</div> -->
+
+<div fxLayoutAlign="center center" fxFlexFill class="container">
+    <mat-card fxFlex="25">
+        <mat-toolbar color="primary">Staff Login</mat-toolbar>
+        <form fxLayoutAlign="strech" fxLayout="column" class="login-form">
+            <mat-form-field>
+                <input matInput placeholder="Email" #email>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="password" matInput placeholder="Password" #password>
+            </mat-form-field>
+            <button (click)="onSignIn(email.value, password.value)" mat-raised-button type="submit">Login</button>
+        </form>
+    </mat-card>
+</div>
