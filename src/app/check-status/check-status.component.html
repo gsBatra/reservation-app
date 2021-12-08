@@ -1,28 +1,41 @@
+<div class="home-bar">
+    <img src="../../assets/Logo.svg" [style.cursor]="'pointer'" routerLink="/">
+    <span class="fill-remaining-space"></span>
+    <img class="link" [routerLink]="['/reservation-list']" src="../../assets/Button.svg">
+
+</div>
+
 <mat-spinner *ngIf="loading"></mat-spinner>
 
-<div *ngIf="!loading && !isFound">
-    <h2>Check on your reservation</h2>
-    <h3>Please enter the reservation code sent to your email to modify your reservation:</h3>
-    <form (ngSubmit)="getReservation()" >
-        <mat-form-field>
-            <input [(ngModel)]="reservation.code" name="code" matInput placeholder="Enter Code">
-        </mat-form-field>
-        <button class="status" mat-raised-button color="primary">Check Status</button>
-    </form>
-</div>  
+<div class="container">
+    <img class="cover" src="../../assets/resImage.png"/>
+    <div class="content-container">
+        <div *ngIf="!loading && !isFound">
+            <h1 class="title">Check on your reservation</h1>
+            <h3>Please enter the reservation code sent to your email to modify your reservation:</h3>
+            <form (ngSubmit)="getReservation()" >
+                <mat-form-field class="test">
+                    <input [(ngModel)]="reservation.code" name="code" matInput placeholder="Enter Code">
+                </mat-form-field>
+                <button class="status" >Check Status</button>
+            </form>
+        </div>  
+        
+        <div *ngIf="!loading && isFound">
+            <mat-list role="reservation-status">
+                <h3>Reservation Code: {{reservation.code}}</h3>
+                <mat-list-item role="listitem">Date: {{ reservation.date }} </mat-list-item>
+                <mat-list-item role="listitem">Time: {{ reservation.time }} </mat-list-item>
+                <mat-list-item role="listitem">Name: {{ reservation.name }}</mat-list-item>
+                <mat-list-item role="listitem">Email: {{ reservation.email }}</mat-list-item>
+                <mat-list-item role="listitem">Phone Number: {{ reservation.phone }}</mat-list-item>
+                <mat-list-item role="listitem">Table Size: {{ reservation.table }} </mat-list-item>
+            </mat-list>
+            <div class="status_btns">
+                <button (click)="onEdit()" class="edit" mat-raised-button color="primary">Edit</button>
+                <button (click)="onCancel()" class="cancel" mat-raised-button color="warn">Cancel</button>
+            </div>
+        </div>
 
-<div *ngIf="!loading && isFound">
-    <mat-list role="reservation-status">
-        <h3>Reservation Code: {{reservation.code}}</h3>
-        <mat-list-item role="listitem">Date: {{ reservation.date }} </mat-list-item>
-        <mat-list-item role="listitem">Time: {{ reservation.time }} </mat-list-item>
-        <mat-list-item role="listitem">Name: {{ reservation.name }}</mat-list-item>
-        <mat-list-item role="listitem">Email: {{ reservation.email }}</mat-list-item>
-        <mat-list-item role="listitem">Phone Number: {{ reservation.phone }}</mat-list-item>
-        <mat-list-item role="listitem">Table Size: {{ reservation.table }} </mat-list-item>
-    </mat-list>
-    <div class="status_btns">
-        <button (click)="onEdit()" class="edit" mat-raised-button color="primary">Edit</button>
-        <button (click)="onCancel()" class="cancel" mat-raised-button color="warn">Cancel</button>
     </div>
 </div>

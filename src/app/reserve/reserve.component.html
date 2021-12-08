@@ -1,8 +1,15 @@
+<div class="home-bar">
+    <img  class="logo" src="../../assets/Logo.svg" [style.cursor]="'pointer'" routerLink="/">
+
+</div>
+
 <mat-toolbar class="cancel-edit-bar" *ngIf="this.router.url !== '/reserve'">
     <span>{{reservationService.form.controls['$key'].value ? "Edit Reservation" : "Create Reservation"}}</span>
     <span class="fill-remaining-space"></span>
     <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
 </mat-toolbar>
+
+
 
 <div class="form-container"> 
     <form [formGroup]="reservationService.form" (ngSubmit)="createReservation()">

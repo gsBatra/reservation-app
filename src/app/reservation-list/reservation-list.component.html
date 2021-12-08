@@ -1,4 +1,9 @@
 
+<div class="home-bar">
+    <img  class="logo" src="../../assets/Logo.svg" [style.cursor]="'pointer'" routerLink="/">
+
+</div>
+
 <div class="actions">
     <mat-form-field class="search-form" floatLabel="never">
         <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">

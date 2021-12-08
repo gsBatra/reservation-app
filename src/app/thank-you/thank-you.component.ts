@@ -16,4 +16,5 @@ export class ThankYouComponent implements OnInit {
   onModify() {
     this.router.navigate(['/check-status']);
   }
+  
 }
