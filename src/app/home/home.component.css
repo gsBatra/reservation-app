@@ -2,7 +2,6 @@
     display: flex;
     margin: 0 auto;
     justify-content: space-between;
-    
 }
 
 .home-bar{
@@ -44,7 +43,7 @@
 .cover_image{
 
 width: auto;
-height: 650px;
+height: 675px;
 }
 
 .button-group{
