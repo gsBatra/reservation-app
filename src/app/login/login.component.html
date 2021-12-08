@@ -5,17 +5,26 @@
     <mat-checkbox class="show_cb" (click)="showPassword()" color="warn">Show Password</mat-checkbox>
 </div> -->
 
-<div fxLayoutAlign="center center" fxFlexFill class="container">
-    <mat-card fxFlex="25">
-        <mat-toolbar color="primary">Staff Login</mat-toolbar>
-        <form fxLayoutAlign="strech" fxLayout="column" class="login-form">
-            <mat-form-field>
-                <input matInput placeholder="Email" #email>
-            </mat-form-field>
-            <mat-form-field>
-                <input type="password" matInput placeholder="Password" #password>
-            </mat-form-field>
-            <button (click)="onSignIn(email.value, password.value)" mat-raised-button type="submit">Login</button>
-        </form>
-    </mat-card>
+<div class="home-bar">
+    <span class="fill-remaining-space"></span>
+    <img class="link" [routerLink]="['/reservation-list']" src="../../assets/Button.svg">
+
+</div>
+
+<div class="container">
+    <img class="logo" src="../../assets/Logo.svg" [style.cursor]="'pointer'" routerLink="/">
+
+    <div fxLayoutAlign="center center" fxFlexFill class="container">
+        <mat-card fxFlex="50">
+            <form fxLayoutAlign="strech" fxLayout="column" class="login-form">
+                <mat-form-field>
+                    <input matInput placeholder="Email" #email>
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="password" matInput placeholder="Password" #password>
+                </mat-form-field>
+                <button class="log-button" (click)="onSignIn(email.value, password.value)" type="submit">Login</button>
+            </form>
+        </mat-card>
+    </div>
 </div>

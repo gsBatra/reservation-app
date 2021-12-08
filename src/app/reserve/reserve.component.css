@@ -1,5 +1,6 @@
 .form-container {
-    max-width: 350px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 form {
@@ -17,3 +18,19 @@ form {
     height: 40px;
     padding: 0px !important;
   }
+
+
+  .home-bar{
+    display: flex;
+    justify-content:center;
+    margin-bottom: 250px;
+    width: 100%;
+    margin: 0 auto;
+
+    
+}
+
+
+.logo{
+  margin-bottom: 20px;
+}
