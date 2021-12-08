@@ -60,7 +60,7 @@ export class CheckStatusComponent implements OnInit {
         this.reservation.email = foundReservation.email;
         this.reservation.time = foundReservation.time;
         this.reservation.date = foundReservation.date;
-        this.reservation.phone = foundReservation.date;
+        this.reservation.phone = foundReservation.phone;
         this.reservation.table = foundReservation.table;
         this.reservation.code = foundReservation.code;
         this.reservation.stamp = foundReservation.stamp;
